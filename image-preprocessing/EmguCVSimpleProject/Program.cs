@@ -38,8 +38,10 @@ namespace EmguCVSimpleProject
                         detectedFaceRectangles = cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 1, Size.Empty, Size.Empty);
                         if (detectedFaceRectangles.Length > 0)
                         {
-                            img = img.GetSubRect(detectedFaceRectangles[0]);
-                           // Console.WriteLine(imageName + " has face detected.");
+                            //TODO: Pronaći najbolju veličinu lica, zasad postavljeno na 64x64
+                            img = (img.GetSubRect(detectedFaceRectangles[0])).Resize(64,64, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+
+                            // Console.WriteLine(imageName + " has face detected.");
                             int lastSlash = imageName.LastIndexOf('\\');
                             string fileName = imageName.Substring(lastSlash + 1, imageName.Length - lastSlash - 1);
                             img.Save(imagesResourcePath + "_faces/" + fileName);
