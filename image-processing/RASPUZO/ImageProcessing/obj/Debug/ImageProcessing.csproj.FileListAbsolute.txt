@@ -1,0 +1,5 @@
+C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\ImageProcessing\bin\Debug\ImageProcessing.dll
+C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\ImageProcessing\bin\Debug\ImageProcessing.pdb
+C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\ImageProcessing\obj\Debug\ImageProcessing.csprojResolveAssemblyReference.cache
+C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\ImageProcessing\obj\Debug\ImageProcessing.dll
+C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\ImageProcessing\obj\Debug\ImageProcessing.pdb
