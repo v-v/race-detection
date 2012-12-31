@@ -1,0 +1,8 @@
+D:\Dodo\faks\RASP\ucitavanjeSlika\obj\Debug\ResolveAssemblyReference.cache
+D:\Dodo\faks\RASP\ucitavanjeSlika\bin\Debug\ucitavanjeSlika.exe
+D:\Dodo\faks\RASP\ucitavanjeSlika\bin\Debug\ucitavanjeSlika.pdb
+D:\Dodo\faks\RASP\ucitavanjeSlika\obj\Debug\ucitavanjeSlika.exe
+D:\Dodo\faks\RASP\ucitavanjeSlika\obj\Debug\ucitavanjeSlika.pdb
+D:\Dodo\faks\RASP\ucitavanjeSlika\bin\Debug\Emgu.CV.dll
+D:\Dodo\faks\RASP\ucitavanjeSlika\bin\Debug\Emgu.Util.dll
+D:\Dodo\faks\RASP\ucitavanjeSlika\bin\Debug\ucitavanjeSlika.exe.config
