@@ -1,14 +1,117 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace ImageProcessing
 {
-    // besramno kopirano s interneta, ako bude smisla kanim napraviti paralelnu verziju
-    // http://grasshoppernetwork.com/showthread.php?tid=849
-    public class LBP
+    /// <summary>
+    /// Klasa koja računa LBP vrijednosti
+    /// </summary>
+    public static class LBP
     {
-        public Bitmap GrayConversion(Bitmap srcBmp, int width, int height)
+        /// <summary>
+        /// Računa LBP vrijednosti slike
+        /// </summary>
+        /// <param name="source">EmguCV slika</param>
+        /// <param name="r">Radijus koji LBP gleda</param>
+        /// <param name="width">Širina slike</param>
+        /// <param name="height">Visina slike</param>
+        /// <returns>Matricu double LBP vrijednosti</returns>
+        public static double[,] LBPAlgorithm(Image<Bgr, Byte> source, int r, int width, int height)
+        {
+            var numRow = source.Height;
+            var numCol = source.Width;
+            var mat = new double[numCol, numRow];
+
+            for (var i = 0; i < numRow; i++)
+            {
+                for (var j = 0; j < numCol; j++)
+                {
+                    mat[j, i] = 0;
+
+                    //define boundary condition, other wise say if you are looking at pixel (0,0), it does not have any suitable neighbors
+                    if ((i <= r) || (j <= r) || (i >= (numRow - r)) || (j >= (numCol - r))) continue;
+
+                    var vals = new List<int>();
+                    try
+                    {
+                        for (var i1 = i - r; i1 < (i + r); i1++)
+                        {
+                            for (var j1 = j - r; j1 < (j + r); j1++)
+                            {
+                                var acPixel = source[j, i].Red;
+                                var nbrPixel = source[j1, i1].Red;
+
+                                vals.Add(nbrPixel > acPixel ? 1 : 0);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return null;
+                    }
+
+                    var d1 = Bin2Dec(vals);
+                    mat[j, i] = d1;
+                }
+            }
+
+            return mat;
+        }
+
+        /// <summary>
+        /// Listu nula i jedinica pretvara u double
+        /// </summary>
+        /// <param name="bin">Lista nula i jedinica</param>
+        /// <returns>Decimalna vrijednost</returns>
+        public static double Bin2Dec(List<int> bin)
+        {
+            return bin.Select((t, i) => t * Math.Pow(2, i)).Sum();
+        }
+
+        #region Deprecated
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mat"></param>
+        /// <param name="lbp"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        [Obsolete("Ne koristi se više", true)]
+        private static double[,] NormalizeLbpMatrix(double[,] mat, Image<Bgr, Byte> lbp, double max)
+        {
+            int numRow = lbp.Height;
+            int numCol = lbp.Width;
+            for (int i = 0; i < numRow; i++)
+            {
+                for (int j = 0; j < numCol; j++)
+                {
+                    // see the Normalization process of dividing pixel by max value and multiplying with 255
+                    double d = mat[j, i] / max;
+                    int v = (int)(d * 255);
+                    Color c = Color.FromArgb(v, v, v);
+                    var item = lbp[j, i];
+
+                    item.Blue = c.B;
+                    item.Green = c.G;
+                    item.Red = c.R;
+                }
+            }
+            return mat;
+        }
+
+        /// <summary>
+        /// Transformira sliku u grayscale
+        /// </summary>
+        /// <param name="srcBmp"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        [Obsolete("Ne koristi se više", true)]
+        public static Bitmap GrayConversion(Bitmap srcBmp, int width, int height)
         {
             var bmp = srcBmp;
             var numRow = height;
@@ -29,88 +132,6 @@ namespace ImageProcessing
             }
             return gray;
         }
-
-        public Bitmap LBPAlgorithm(Bitmap srcBmp, int r, int width, int height)
-        {
-            //1. Extract rows and columns from srcImage . Note Source image is Gray scale Converted Image
-            int numRow = srcBmp.Height;
-            int numCol = srcBmp.Width;
-            var lbp = new Bitmap(numCol, numRow); // resultant matrix
-            var mat = new double[numCol, numRow];
-            double max = 0.0;
-
-            //2. Loop through Pixels
-            for (int i = 0; i < numRow; i++)
-            {
-                for (int j = 0; j < numCol; j++)
-                {
-                    mat[j, i] = 0;
-
-                    //define boundary condition, other wise say if you are looking at pixel (0,0), it does not have any suitable neighbors
-                    if ((i > r) && (j > r) && (i < (numRow - r)) && (j < (numCol - r)))
-                    {
-                        // we want to store binary values in a List
-                        var vals = new List<int>();
-                        try
-                        {
-                            for (int i1 = i - r; i1 < (i + r); i1++)
-                            {
-                                for (int j1 = j - r; j1 < (j + r); j1++)
-                                {
-                                    int acPixel = srcBmp.GetPixel(j, i).R;
-                                    int nbrPixel = srcBmp.GetPixel(j1, i1).R;
-                                    // 3. This is the main Logic of LBP
-
-                                    vals.Add(nbrPixel > acPixel ? 1 : 0);
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                        }
-                        //4. Once we have a list of 1's and 0's , convert the list to decimal
-                        // Also for normalization purpose calculate Max value
-                        double d1 = Bin2Dec(vals);
-                        mat[j, i] = d1;
-                        if (d1 > max)
-                        {
-                            max = d1;
-                        }
-                    }
-                }
-            }
-            //5. Normalize LBP matrix MAT an obtain LBP image lbp
-            lbp = NormalizeLbpMatrix(mat, lbp, max);
-            return lbp;
-        }
-
-        public static double Bin2Dec(List<int> bin)
-        {
-            double d = 0;
-
-            for (int i = 0; i < bin.Count; i++)
-            {
-                d += bin[i] * Math.Pow(2, i);
-            }
-            return d;
-        }
-
-        private Bitmap NormalizeLbpMatrix(double[,] mat, Bitmap lbp, double max)
-        {
-            int numRow = lbp.Height;
-            int numCol = lbp.Width;
-            for (int i = 0; i < numRow; i++)
-            {
-                for (int j = 0; j < numCol; j++)
-                {
-                    // see the Normalization process of dividing pixel by max value and multiplying with 255
-                    double d = mat[j, i] / max;
-                    int v = (int)(d * 255);
-                    Color c = Color.FromArgb(v, v, v);
-                    lbp.SetPixel(j, i, c);
-                }
-            }
-            return lbp;
-        }
+        #endregion
     }
 }

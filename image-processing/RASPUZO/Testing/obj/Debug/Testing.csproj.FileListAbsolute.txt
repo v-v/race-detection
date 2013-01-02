@@ -8,3 +8,17 @@ C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\Testing\bin\Debug\
 C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
 C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\Testing\obj\Debug\Testing.dll
 C:\Users\smisak\Documents\Visual Studio 2012\Projects\RASPUZO\Testing\obj\Debug\Testing.pdb
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\mark.png
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Penguins.jpg
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Tulips.jpg
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Testing.dll
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Testing.pdb
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\ImageProcessing.dll
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Emgu.CV.dll
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Emgu.Util.dll
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\ImageProcessing.pdb
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Emgu.CV.xml
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\bin\Debug\Emgu.Util.xml
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\obj\Debug\Testing.dll
+C:\Users\smisak\Documents\GitHub\race-detection\image-processing\RASPUZO\Testing\obj\Debug\Testing.pdb
