@@ -52,11 +52,23 @@ namespace ucitavanjeSlika
     {
         static void Main()
         {
+            for(int m=2;m<150;m++){
+            string broj;
             List<KlasaObjekt> lista = new List<KlasaObjekt>();
             List<string> listaOznaka = new List<string>();
-            string imagesResourcePath1 = ".\\data\\images\\broj\\*fa*";
-            string imagesResourcePath2 = ".\\data\\images\\broj\\*fb*";
-            string imageDataFile = ".\\data\\ground_truths\\name_value\\broj.txt";
+            if (m < 10) {
+                broj = "0000" + m.ToString(); 
+            }
+            else if (m > 10 && m < 100)
+            {
+                broj = "000" + m.ToString(); 
+            }
+            else {
+                broj = "00" + m.ToString(); 
+            }
+            string imagesResourcePath1 = ".\\data\\images\\"+broj+"\\*fa*";
+            string imagesResourcePath2 = ".\\data\\images\\"+broj+"\\*fb*";
+            string imageDataFile = ".\\data\\ground_truths\\name_value\\"+broj+".txt";
             string[] imagesFileNames1 = Directory.GetFiles(imagesResourcePath1);
             string[] imagesFileNames2 = Directory.GetFiles(imagesResourcePath2);
             string[] lines = System.IO.File.ReadAllLines(imageDataFile);
@@ -108,6 +120,7 @@ namespace ucitavanjeSlika
 
             Console.WriteLine("Finished processing. Enter to exit.");
             Console.ReadLine();
+        }
         }
 
     }
