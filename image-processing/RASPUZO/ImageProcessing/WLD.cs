@@ -1,19 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace ImageProcessing
 {
-    public class WLD
+    /// <summary>
+    /// Računa karakteristile koristeći Webberov zakon
+    /// </summary>
+    public static class WLD
     {
-        public static Bitmap WLDAlgorithm(Bitmap graySource, int width, int height)
+        /// <summary>
+        /// TODO: A work in progress
+        /// Računa WLD
+        /// </summary>
+        /// <param name="graySource">EmguCV slika - grayscale</param>
+        /// <param name="width">Širina slike</param>
+        /// <param name="height">Visina slike</param>
+        /// <returns>2D matricu s double vrijednostima</returns>
+        public static double[,] WLDAlgorithm(Image<Bgr, Byte> graySource, int width, int height)
         {
             var bmp = graySource;
             var numRow = height;
             var numCol = width;
-            var gray = new Bitmap(width, height);
+            var gray = new double[width, height];
 
             int blockSizeY = 3;
             int blockSizeX = 3;
@@ -22,7 +31,7 @@ namespace ImageProcessing
             double epsilon = 1e-7;
             int brojSusjeda = 8;
 
-            if(numCol < blockSizeX || numRow < blockSizeY)
+            if (numCol < blockSizeX || numRow < blockSizeY)
                 throw new Exception("Slika je premala!");
 
             var filter = new[,]
@@ -35,7 +44,7 @@ namespace ImageProcessing
             int dx = width - blockSizeX;
             int dy = height - blockSizeY;
 
-            return null;
+            return gray;
         }
     }
 }
