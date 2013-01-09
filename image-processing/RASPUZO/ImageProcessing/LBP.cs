@@ -14,6 +14,8 @@ namespace ImageProcessing
     {
         /// <summary>
         /// Računa LBP vrijednosti slike
+        /// 
+        /// Dodati standardnu devijaciju!!
         /// </summary>
         /// <param name="source">EmguCV slika</param>
         /// <param name="r">Radijus koji LBP gleda</param>

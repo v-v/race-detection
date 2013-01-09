@@ -69,6 +69,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImagePreprocessing\ImagePreprocessing.csproj">
+      <Project>{c853f8e0-1748-4b52-b580-8808bae98804}</Project>
+      <Name>ImagePreprocessing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImageProcessing\ImageProcessing.csproj">
       <Project>{2c810708-5939-4d30-a3f3-1841b21b0d72}</Project>
       <Name>ImageProcessing</Name>
