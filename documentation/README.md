@@ -1,1 +1,0 @@
-Sve prezentacije i dokumentacija.
