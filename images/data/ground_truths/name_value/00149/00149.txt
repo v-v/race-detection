@@ -1,4 +1,0 @@
-id=cfrS00149
-gender=Female
-yob=1963
-race=Pacific-Islander

@@ -1,4 +1,0 @@
-id=cfrS00125
-gender=Female
-yob=1973
-race=White

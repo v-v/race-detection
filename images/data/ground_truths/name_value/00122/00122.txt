@@ -1,4 +1,0 @@
-id=cfrS00122
-gender=Male
-yob=1973
-race=Hispanic

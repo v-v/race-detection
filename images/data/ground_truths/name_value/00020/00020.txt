@@ -1,4 +1,0 @@
-id=cfrS00020
-gender=Female
-yob=1963
-race=Asian

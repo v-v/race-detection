@@ -1,4 +1,0 @@
-id=cfrS00101
-gender=Female
-yob=1973
-race=Hispanic

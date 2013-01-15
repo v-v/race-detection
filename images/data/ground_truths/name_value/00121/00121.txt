@@ -1,4 +1,0 @@
-id=cfrS00121
-gender=Female
-yob=1973
-race=Black-or-African-American
